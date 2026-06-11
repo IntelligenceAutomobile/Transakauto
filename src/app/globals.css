@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-night: #0d0c10;
+  --color-coal: #16151b;
+  --color-coal-light: #211f27;
+  --color-cream: #f4f0e8;
+  --color-cream-dark: #e9e3d7;
+  --color-ink: #1b1a1f;
+  --color-magenta: #ed008c;
+  --color-magenta-dark: #c1006f;
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-night);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-magenta);
+  color: #fff;
+}
+
+/* Apparition au scroll (activée par le composant Reveal) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
